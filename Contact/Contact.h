@@ -1,13 +1,18 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
+#include<string.h>
 #include<stdlib.h>
+#include<assert.h>
+
 #define MAX_NAME 10
-#define MAX_SEX 5
-#define MAX_TELE 12
+#define MAX_SEX 3
+#define MAX_TELE 12 
 #define MAX_ADDR 10
-#define MAX_CAPACITY 3
-#define MAX_ADD_CAPA 2
-typedef struct peoinfo
+#define INIT_LEN 3
+#define EXPAN_LEN 2
+//#define MAX_CAP 100
+
+typedef struct peoinfo //联系人
 {
 	char name[MAX_NAME];
 	int age;
@@ -16,33 +21,40 @@ typedef struct peoinfo
 	char addr[MAX_ADDR];
 }peoinfo;
 
-typedef struct Contact
+/*typedef struct con  //通讯录
 {
-	peoinfo* date;
+	peoinfo data[MAX_CAP];
+	int sz;
+}contact;*/
+
+typedef struct con
+{
+	peoinfo* data;
 	int sz;
 	int capacity;
-}Contact;
+}contact;
+
 
 //初始化通讯录
-void InitContact(Contact* pc);
+void InitContact(contact* pc);
 
 //增加联系人
-void AddContact(Contact* pc);
+void AddContact(contact* pc);
 
-//打印通讯录
-void PrintContact(Contact* pc);
+//查看通讯录
+void ShowContact(const contact* pc);
 
 //删除联系人
-void DelContact(Contact* pc);
+void DelContact(contact* pc);
 
 //查找联系人
-void SearchPeoinfo(Contact* pc);
+void SearchContact(const contact* pc);
 
-//修改通讯录
-void ModifyContact(Contact* pc);
+//修改联系人
+void ModifyContact(contact* pc);
 
-//按姓名首字母排序
-void SortContact(Contact* pc);
+//对通讯录排序
+void SortContact(contact* pc);
 
 //销毁通讯录
-void DestoryContact(Contact* pc);
+void DestroyContact(contact* pc);
